@@ -1,3 +1,8 @@
+// Package logger is responsible for the file logger system used in the application.
+// Two types of logs are used at the moment:
+//   - Debug - Debugging information. Useful for further analysis to understand a problem
+//     or to prepare future changes
+//   - Error - Errors that occurred in the application.
 package logger
 
 import (
@@ -8,6 +13,8 @@ import (
 	"runtime"
 	"strings"
 	"time"
+
+	utils "github.com/aosousa/golang-utils"
 )
 
 const (
@@ -41,11 +48,11 @@ func logToFile(logType string, message string) {
 	// check if the directory exists, otherwise create it
 	if err := os.MkdirAll(folderPath, 0644); err != nil {
 		// if an error occurred, log it to the command line
-		log.Panic(err)
+		fmt.Printf("[%s] %s", utils.GetCurrentDateTime(), err)
 	} else {
 		logFile, err := os.OpenFile(filePath, os.O_APPEND|os.O_RDWR|os.O_CREATE, 0644)
 		if err != nil {
-			log.Panic(err)
+			fmt.Printf("[%s] %s", utils.GetCurrentDateTime(), err)
 		}
 		defer logFile.Close()
 

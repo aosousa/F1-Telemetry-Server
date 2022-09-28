@@ -9,6 +9,8 @@ import (
 	"os"
 	"time"
 
+	_ "github.com/go-sql-driver/mysql"
+
 	"github.com/aosousa/F1-Telemetry-Server/logger"
 	"github.com/aosousa/F1-Telemetry-Server/models"
 )
@@ -16,21 +18,21 @@ import (
 const ()
 
 var (
-	config models.Config
+	Config models.Config
 	db     *sql.DB
 )
 
 // InitConfig adds information from a configuration file to a Config struct
 // that will be used throughout the application
 func InitConfig() {
-	config = models.CreateConfig()
+	Config = models.CreateConfig()
 }
 
 // InitDatabase establishes a connection to the database with parameters in the
 // configuration struct that was previously created.
 func InitDatabase() {
 	var err error
-	sqlStmt := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", config.DB.User, config.DB.Password, config.DB.Host, config.DB.Port, config.DB.Schema)
+	sqlStmt := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", Config.DB.User, Config.DB.Password, Config.DB.Host, Config.DB.Port, Config.DB.Schema)
 
 	// establish connection to the database
 	db, err = sql.Open("mysql", sqlStmt)
