@@ -77,7 +77,7 @@ type WeatherForecastSample struct {
 // 6 - Long
 // 7 - Full
 type PacketSessionData struct {
-	Header                    Header                    // Header
+	Header                    Header                    // Packet header
 	Weather                   uint8                     // Weather information. See Weather constants above for more information
 	TrackTemperature          int8                      // Track temperature in Celsius
 	AirTemperature            int8                      // Air temperature in Celsius
