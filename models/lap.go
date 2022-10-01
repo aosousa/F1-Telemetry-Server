@@ -19,10 +19,10 @@ package models
 // 6 - Not Classified
 // 7 - Retired
 type LapData struct {
-	LastLapTimeInMS             uint32  // Last lap time in milliseconds
-	CurrentLapTimeInMS          uint32  // Current time around the lap in milliseconds
-	SectorOneTimeInMS           uint16  // Sector 1 time in milliseconds
-	SectorTwoTimeInMS           uint16  // Sector 2 time in milliseconds
+	LastLapTime                 uint32  // Last lap time in milliseconds
+	CurrentLapTime              uint32  // Current time around the lap in milliseconds
+	SectorOneTime               uint16  // Sector 1 time in milliseconds
+	SectorTwoTime               uint16  // Sector 2 time in milliseconds
 	LapDistance                 float64 // Distance vehicle is around current lap in metres (can be negative if the line hasn't been crossed yet)
 	TotalDistance               float64 // Total distance travelled in session in metres (can be negative if the line hasn't been crossed yet)
 	SafetyCarDelta              float64 // Delta in seconds for safety car
@@ -40,8 +40,8 @@ type LapData struct {
 	DriverStatus                uint8   // Status of the driver. See DriverStatus constants above for more information
 	ResultStatus                uint8   // Result status. See ResultStatus constants above for more information
 	PitLaneTimerActive          uint8   // Pit lane timing. 0 = Inactive, 1 = Active
-	PitLaneTimeInLaneInMS       uint16  // If PitLaneTimerActive = 1, the current time spent in the pit lane in milliseconds
-	PitStopTimerInMS            uint16  // Time of the actual pit stop in milliseconds
+	PitLaneTimeInLane           uint16  // If PitLaneTimerActive = 1, the current time spent in the pit lane in milliseconds
+	PitStopTimer                uint16  // Time of the actual pit stop in milliseconds
 	PitStopShouldServePen       uint8   // Whether the car should serve a penalty at the current pit stop
 }
 
